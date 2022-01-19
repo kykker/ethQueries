@@ -8,10 +8,6 @@ Set of simple queries on the Ethereum network.
 - Get the history of transfers
 - Check if an address have ever interacted with a specific contract
 
-- Scrape fees data from cryptofees.infoype some Markdown on the left
-- Then plot the scraped data as time series using ChartJS
-- ✨Compare tokens  values ✨
-
 ## Components
 
 - ./scraper_input

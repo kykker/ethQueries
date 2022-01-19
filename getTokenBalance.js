@@ -5,10 +5,11 @@ const networks = require('./inputs/networks.json');
 const web3 = new Web3(new Web3.providers.HttpProvider(networks.mainnet));
 const contract = require('./inputs/erc20Contracts.json');
 const tokenABI = require('./inputs/chainlinkABI.json');
-// const wallets = require('./walletAddresses.json');
+const wallet = require('./walletArray')
 require('dotenv').config()
 const etherscan_apikey = process.env.ETHERSCAN_APIKEY;
-const wallet = process.env.BRAVE1
+
+
 addressURL = contract;
 //const axios = require("axios");
 const fetch = require('node-fetch');
@@ -38,7 +39,12 @@ async function tokenBalance(someAddress) {
     const bal = await web3.utils.fromWei(rawbal);
     console.log(bal);
 }
-tokenBalance(wallet);
+
+for ( let node of wallet ) {
+
+  tokenBalance(node);
+  
+}
 
 
 

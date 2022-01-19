@@ -1,12 +1,14 @@
 //const ganache = require('ganache-cli');
 //const web3 = new Web3(ganache.provider());
 const Web3 = require('web3');
-const networks = require('./networks.json');
+const networks = require('./inputs/networks.json');
 const web3 = new Web3(new Web3.providers.HttpProvider(networks.mainnet));
-const contract = require('./contractAddresses.json');
-const tokenABI = require('./chainlinkABI.json');
-const wallets = require('./walletAddresses.json');
-const etherscan_apikey = "WFNEX4S15R9XXQBJ5QVCZK1F2NG8PGMIIK";
+const contract = require('./inputs/erc20Contracts.json');
+const tokenABI = require('./inputs/chainlinkABI.json');
+// const wallets = require('./walletAddresses.json');
+require('dotenv').config()
+const etherscan_apikey = process.env.ETHERSCAN_APIKEY;
+const wallet = process.env.BRAVE1
 addressURL = contract;
 //const axios = require("axios");
 const fetch = require('node-fetch');
@@ -17,7 +19,7 @@ const fetch = require('node-fetch');
 
 
 async function getAbi() {
-  const url = `https://api.etherscan.io/api?module=contract&action=getabi&address=${addressURL.anyswap}&apikey=${etherscan_apikey}` ;
+  const url = `https://api.etherscan.io/api?module=contract&action=getabi&address=${addressURL.chainlink}&apikey=${etherscan_apikey}` ;
   const response = await fetch(url);
   const data = await response.json();
   const abi = data.result;
@@ -31,12 +33,12 @@ async function getAbi() {
 async function tokenBalance(someAddress) {
     const abi = await getAbi();
     const contractAbi = JSON.parse(abi);
-    const tokenInstance = await new web3.eth.Contract(contractAbi,contract.anyswap);
+    const tokenInstance = await new web3.eth.Contract(contractAbi,contract.chainlink);
     const rawbal = await tokenInstance.methods.balanceOf(someAddress).call();
     const bal = await web3.utils.fromWei(rawbal);
     console.log(bal);
 }
-tokenBalance(wallets.brave);
+tokenBalance(wallet);
 
 
 

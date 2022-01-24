@@ -10,5 +10,6 @@
     "sora":"0x40fd72257597aa14c7231a7b1aaa29fce868f677",
     "xi":"0x295b42684f90c77da7ea46336001010f2791ec8c",
     "anyswap": "0xf99d58e463a2e07e5692127302c20a191861b4d6",
-    "WETH": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    "WETH": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "eden": "0x1559fa1b8f28238fd5d76d9f434ad86fd20d1559"
 }
